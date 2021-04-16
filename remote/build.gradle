@@ -1,7 +1,6 @@
 plugins {
     id 'java-library'
     id 'kotlin'
-    //id("kotlin-kapt")
 }
 
 dependencies {
@@ -9,16 +8,12 @@ dependencies {
 
     implementation remoteDependencies.retrofit
     implementation remoteDependencies.retrofitMoshi
-    //implementation remoteDependencies.moshi
     implementation remoteDependencies.okHTTPLogger
     implementation remoteDependencies.javaxInject
-
-    //kapt remoteDependencies.moshiCodeGen
 
     testImplementation TestLibraries.junit
     testImplementation TestLibraries.truth
     testImplementation TestLibraries.mockWebServer
-
 }
 
 sourceCompatibility = JavaVersion.VERSION_1_8.toString()
