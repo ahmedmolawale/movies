@@ -1,13 +1,31 @@
 plugins {
     id 'java-library'
     id 'kotlin'
-}
-
-java {
-    sourceCompatibility = JavaVersion.VERSION_1_7
-    targetCompatibility = JavaVersion.VERSION_1_7
+    //id("kotlin-kapt")
 }
 
 dependencies {
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation project(':data')
+
+    implementation remoteDependencies.retrofit
+    implementation remoteDependencies.retrofitMoshi
+    //implementation remoteDependencies.moshi
+    implementation remoteDependencies.okHTTPLogger
+    implementation remoteDependencies.javaxInject
+
+    //kapt remoteDependencies.moshiCodeGen
+
+    testImplementation TestLibraries.junit
+    testImplementation TestLibraries.truth
+    testImplementation TestLibraries.mockWebServer
+
 }
+
+sourceCompatibility = JavaVersion.VERSION_1_8.toString()
+targetCompatibility = JavaVersion.VERSION_1_8.toString()
+
+sourceSets {
+    main.java.srcDirs += 'src/main/kotlin'
+    test.java.srcDirs += 'src/test/kotlin'
+}
+apply from: "../ktlint.gradle"

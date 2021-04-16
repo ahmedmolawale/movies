@@ -1,17 +1,16 @@
 plugins {
-    id 'com.android.library'
-    id 'kotlin-android'
+    id("com.android.library")
+    id("kotlin-android")
+    id("kotlin-kapt")
 }
 
 android {
-    compileSdkVersion 30
-    buildToolsVersion "30.0.3"
+    compileSdkVersion AndroidSdk.compileSdk
+    buildToolsVersion AndroidSdk.buildTools
 
     defaultConfig {
-        minSdkVersion 22
-        targetSdkVersion 30
-        versionCode 1
-        versionName "1.0"
+        minSdkVersion AndroidSdk.minSdk
+        targetSdkVersion AndroidSdk.targetSdk
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
@@ -28,17 +27,31 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
     }
 }
 
 dependencies {
 
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    implementation 'androidx.core:core-ktx:1.3.2'
-    implementation 'androidx.appcompat:appcompat:1.2.0'
-    implementation 'com.google.android.material:material:1.3.0'
-    testImplementation 'junit:junit:4.+'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    implementation project(':data')
+
+    //Persistence
+    api cacheDependencies.roomRuntime
+    kapt cacheDependencies.roomCompiler
+    implementation cacheDependencies.roomKtx
+
+    //hilt for DI
+    implementation appDependencies.hilt
+    kapt appDependencies.hiltCompiler
+
+    testImplementation TestLibraries.archCore
+    testImplementation TestLibraries.junit
+    testImplementation TestLibraries.androidX
+    testImplementation TestLibraries.truth
+    testImplementation TestLibraries.coroutines
+    testImplementation TestLibraries.room
+    testImplementation TestLibraries.testRunner
+    testImplementation TestLibraries.robolectric
+
 }
+apply from: "../ktlint.gradle"

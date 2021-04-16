@@ -1,18 +1,22 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'kotlin-parcelize'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
+    id 'androidx.navigation.safeargs.kotlin'
 }
 
 android {
-    compileSdkVersion 30
-    buildToolsVersion "30.0.3"
+    compileSdkVersion AndroidSdk.compileSdk
+    buildToolsVersion AndroidSdk.buildTools
 
     defaultConfig {
-        applicationId "com.ahmedmolawale.movies"
-        minSdkVersion 22
-        targetSdkVersion 30
-        versionCode 1
-        versionName "1.0"
+        applicationId AndroidClient.appId
+        minSdkVersion AndroidSdk.minSdk
+        targetSdkVersion AndroidSdk.targetSdk
+        versionCode AndroidClient.versionCode
+        versionName AndroidClient.versionName
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -30,16 +34,52 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    buildFeatures {
+        viewBinding true
+        dataBinding true
+    }
 }
 
 dependencies {
 
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    implementation 'androidx.core:core-ktx:1.3.2'
-    implementation 'androidx.appcompat:appcompat:1.2.0'
-    implementation 'com.google.android.material:material:1.3.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
-    testImplementation 'junit:junit:4.+'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    //Local Libs
+    implementation project(':domain')
+    implementation project(':cache')
+    implementation project(':remote')
+    implementation project(':data')
+
+
+    //Jetpack
+    implementation appDependencies.androidCore
+    implementation appDependencies.fragmentKTX
+    implementation appDependencies.appCompat
+    implementation appDependencies.constraintLayout
+    implementation appDependencies.swipeRefereshLayout
+    implementation appDependencies.navigationFragmentKTX
+    implementation appDependencies.navigationUIKTX
+
+    //Material
+    implementation appDependencies.materialDesign
+
+    //hilt for DI
+    implementation appDependencies.hilt
+    kapt appDependencies.hiltCompiler
+
+    //image loading
+    implementation appDependencies.coil
+
+    //shimmer
+    implementation appDependencies.shimmer
+
+    //coroutines
+    implementation appDependencies.coroutinesAndroid
+
+    //testImplementation TestLibraries.testCore
+    testImplementation TestLibraries.archCore
+    testImplementation TestLibraries.junit
+    testImplementation TestLibraries.androidX
+    testImplementation TestLibraries.truth
+    testImplementation TestLibraries.coroutines
+
 }
+apply from: "../ktlint.gradle"
