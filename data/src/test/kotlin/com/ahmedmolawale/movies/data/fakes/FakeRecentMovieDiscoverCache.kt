@@ -16,7 +16,7 @@ class FakeRecentMovieDiscoverCache : RecentMovieDiscoverCache {
         return Result.Success(Unit)
     }
 
-    override suspend fun getRecentDiscover(): Result<List<MovieEntity>> {
+    override suspend fun getRecentDiscoveries(): Result<List<MovieEntity>> {
         return Result.Success(cache.values.toList())
     }
 

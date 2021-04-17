@@ -18,7 +18,7 @@ class MovieDiscoverRepositoryImpl @Inject constructor(
 
     override fun getRecentMovieDiscover(): Flow<Result<List<Movie>>> {
         return flow {
-            when (val discoveredMovies = recentMovieDiscoverCache.getRecentDiscover()) {
+            when (val discoveredMovies = recentMovieDiscoverCache.getRecentDiscoveries()) {
                 is Result.Success -> {
                     emit(Result.Success(movieEntityMapper.mapToDomainList(discoveredMovies.data)))
                 }
