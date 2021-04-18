@@ -1,7 +1,6 @@
 package com.ahmedmolawale.movies.data.fakes
 
 import com.ahmedmolawale.movies.data.contract.remote.MovieDiscoverRemote
-import com.ahmedmolawale.movies.data.contract.remote.MovieSearchRemote
 import com.ahmedmolawale.movies.data.model.DummyData
 import com.ahmedmolawale.movies.data.model.MovieEntity
 import com.ahmedmolawale.movies.data.util.ResponseType

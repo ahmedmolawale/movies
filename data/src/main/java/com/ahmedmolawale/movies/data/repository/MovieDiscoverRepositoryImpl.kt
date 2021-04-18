@@ -42,5 +42,4 @@ class MovieDiscoverRepositoryImpl @Inject constructor(
             }
         }
     }
-
 }

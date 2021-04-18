@@ -3,7 +3,6 @@ package com.ahmedmolawale.movies.cache.entity
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-
 @Entity(tableName = "movies")
 data class MovieCacheModel(
     @PrimaryKey
@@ -19,6 +18,6 @@ data class MovieCacheModel(
     val voteAverage: Double,
     val voteCount: Long,
 
-    ) {
+) {
     var isDiscovered: Boolean = false
 }

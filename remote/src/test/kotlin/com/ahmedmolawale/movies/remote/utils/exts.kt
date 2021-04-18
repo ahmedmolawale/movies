@@ -9,7 +9,6 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 import java.io.File
 import java.net.URL
 
-
 private val okHttpClient: OkHttpClient
     get() = OkHttpClient.Builder()
         .build()

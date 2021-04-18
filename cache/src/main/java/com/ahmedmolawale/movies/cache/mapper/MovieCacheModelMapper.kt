@@ -3,8 +3,9 @@ package com.ahmedmolawale.movies.cache.mapper
 import com.ahmedmolawale.movies.cache.entity.MovieCacheModel
 import com.ahmedmolawale.movies.cache.mapper.base.CacheModelMapper
 import com.ahmedmolawale.movies.data.model.MovieEntity
+import javax.inject.Inject
 
-class MovieCacheModelMapper : CacheModelMapper<MovieCacheModel, MovieEntity> {
+class MovieCacheModelMapper @Inject constructor() : CacheModelMapper<MovieCacheModel, MovieEntity> {
     override fun mapToModel(entity: MovieEntity): MovieCacheModel {
         return MovieCacheModel(
             id = entity.id,

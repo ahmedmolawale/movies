@@ -1,7 +1,6 @@
 package com.ahmedmolawale.movies.remote
 
 import com.ahmedmolawale.movies.remote.interceptor.ApiKeyInterceptor
-import com.squareup.moshi.Moshi
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -12,25 +11,28 @@ object ApiServiceFactory {
 
     private const val BASE_URL: String = "https://api.themoviedb.org/"
 
-    fun createApiService(isDebug: Boolean, moshi: Moshi): ApiService {
+    fun createApiService(isDebug: Boolean, apiKey: String): ApiService {
         val okHttpClient: OkHttpClient = makeOkHttpClient(
-            makeLoggingInterceptor((isDebug))
+            makeLoggingInterceptor((isDebug)), apiKey
         )
-        return makeApiService(okHttpClient, moshi)
+        return makeApiService(okHttpClient)
     }
 
-    private fun makeApiService(okHttpClient: OkHttpClient, moshi: Moshi): ApiService {
+    private fun makeApiService(okHttpClient: OkHttpClient): ApiService {
         val retrofit: Retrofit = Retrofit.Builder()
             .baseUrl(BASE_URL)
             .client(okHttpClient)
-            .addConverterFactory(MoshiConverterFactory.create(moshi))
+            .addConverterFactory(MoshiConverterFactory.create())
             .build()
         return retrofit.create(ApiService::class.java)
     }
 
-    private fun makeOkHttpClient(httpLoggingInterceptor: HttpLoggingInterceptor): OkHttpClient {
+    private fun makeOkHttpClient(
+        httpLoggingInterceptor: HttpLoggingInterceptor,
+        apiKey: String
+    ): OkHttpClient {
         return OkHttpClient.Builder()
-            .addInterceptor(ApiKeyInterceptor)
+            .addInterceptor(ApiKeyInterceptor(apiKey))
             .addInterceptor(httpLoggingInterceptor)
             .connectTimeout(30, TimeUnit.SECONDS)
             .readTimeout(30, TimeUnit.SECONDS)

@@ -4,7 +4,7 @@ import com.ahmedmolawale.movies.domain.model.Movie
 
 object DummyData {
 
-    val searchString = "ass"
+    const val searchString = "ass"
     val movieEntity: MovieEntity = MovieEntity(
         id = 1,
         adult = false,

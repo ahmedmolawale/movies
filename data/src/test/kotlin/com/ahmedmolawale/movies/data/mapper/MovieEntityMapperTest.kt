@@ -6,7 +6,6 @@ import com.ahmedmolawale.movies.domain.model.Movie
 import com.google.common.truth.Truth.assertThat
 import org.junit.Test
 
-
 class MovieEntityMapperTest {
     private val movieEntityMapper: MovieEntityMapper = MovieEntityMapper()
 

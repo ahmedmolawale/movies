@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.ahmedmolawale.movies.ui.moviedetails.MovieDetailsViewModel" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <include
+                android:id="@+id/header"
+                layout="@layout/header" />
+
+            <ImageView
+                android:id="@+id/movie_backdrop"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/movie_backdrop_height"
+                android:scaleType="centerCrop"
+                android:src="@drawable/movie_backdrop_default_bg"
+                app:backdropUrl="@{viewModel.movie.backdropPath}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/header" />
+
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/movie_image"
+                android:layout_width="@dimen/movie_detail_poster_image_width"
+                android:layout_height="@dimen/movie_detail_poster_image_height"
+                android:layout_marginStart="16dp"
+                android:layout_marginBottom="16dp"
+                android:scaleType="centerCrop"
+                app:layout_constraintBottom_toBottomOf="@id/movie_backdrop"
+                app:layout_constraintStart_toStartOf="parent"
+                app:posterUrl="@{viewModel.movie.posterPath}"
+                app:shapeAppearance="@style/ShapeAppearance.App.RectImageView"
+                app:srcCompat="@drawable/movie_image_default_bg" />
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/circularstdmedium"
+                android:gravity="center"
+                android:padding="16dp"
+                android:text="@{viewModel.movie.title}"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/movie_backdrop"
+                tools:text="Ahmed OLawale dfjndjfsnksjnfksjfkjsfksjfkjhhdnfkdjnm" />
+
+
+            <LinearLayout
+                android:id="@+id/vote"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toStartOf="@+id/popularity_section"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/title">
+
+                <TextView
+                    android:id="@+id/vote_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/circularstdbold"
+                    android:gravity="center"
+                    android:text="@string/vote_avg"
+                    android:textAllCaps="false"
+                    android:textColor="@color/light_grey"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/vote_avg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/circularstdbook"
+                    android:text="@{viewModel.movie.voteAverage}"
+                    android:textAllCaps="false"
+                    android:textColor="@color/light_grey"
+                    android:textSize="14sp"
+                    tools:text="1.111" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/popularity_section"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toStartOf="@+id/adult_section"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/vote"
+                app:layout_constraintTop_toTopOf="@id/vote">
+
+                <TextView
+                    android:id="@+id/popularity_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/circularstdbold"
+                    android:text="@string/popularity"
+                    android:textAllCaps="false"
+                    android:textColor="@color/light_grey"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/popularity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/circularstdbook"
+                    android:text="@{viewModel.movie.popularity}"
+                    android:textAllCaps="false"
+                    android:textColor="@color/light_grey"
+                    android:textSize="14sp"
+                    tools:text="1" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/adult_section"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/popularity_section"
+                app:layout_constraintTop_toTopOf="@id/vote">
+
+                <TextView
+                    android:id="@+id/adult_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/circularstdbold"
+                    android:text="@string/adult"
+                    android:textAllCaps="false"
+                    android:textColor="@color/light_grey"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/adult"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/circularstdbook"
+                    android:text="@{viewModel.movie.adult}"
+                    android:textAllCaps="false"
+                    android:textColor="@color/light_grey"
+                    android:textSize="14sp"
+                    tools:text="Yes" />
+            </LinearLayout>
+
+
+            <TextView
+                android:id="@+id/overview_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="32dp"
+                android:fontFamily="@font/circularstdblack"
+                android:gravity="center"
+                android:text="@string/overview_label"
+                android:textColor="@color/light_grey"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/vote" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:background="@color/stroke_color"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/overview_label" />
+
+            <TextView
+                android:id="@+id/overview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/circularstdbook"
+                android:lineSpacingMultiplier="1.2"
+                android:text="@{viewModel.movie.overview}"
+                android:padding="16dp"
+                android:textColor="@color/light_grey"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/overview_label"
+                tools:text="sdzvdfsdv dfsxvdszxv dsdzfxc fszdxfcszdxvc dszxfcdsdzxfc dsdzxfcdszxfc sdzfxcsdx" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</layout>

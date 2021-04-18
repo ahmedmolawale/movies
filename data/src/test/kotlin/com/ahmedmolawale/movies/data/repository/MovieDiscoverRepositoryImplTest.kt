@@ -15,7 +15,6 @@ import kotlinx.coroutines.test.runBlockingTest
 import org.junit.Before
 import org.junit.Test
 
-
 @ExperimentalCoroutinesApi
 class MovieDiscoverRepositoryImplTest {
 
@@ -75,7 +74,6 @@ class MovieDiscoverRepositoryImplTest {
         }
     }
 
-
     @Test
     fun `check that discoverMovies() returns empty on no data`() = runBlockingTest {
         movieDiscoverRemote.movieResponseType = ResponseType.EMPTY_DATA
@@ -131,5 +129,4 @@ class MovieDiscoverRepositoryImplTest {
             assertThat(it.data).isEmpty()
         }
     }
-
 }

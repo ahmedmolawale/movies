@@ -6,7 +6,6 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.ahmedmolawale.movies.cache.entity.MovieCacheModel
 
-
 @Dao
 interface MoviesDao {
 

@@ -125,5 +125,4 @@ class MovieSearchRepositoryImplTest {
             assertThat(it.data).isEmpty()
         }
     }
-
 }

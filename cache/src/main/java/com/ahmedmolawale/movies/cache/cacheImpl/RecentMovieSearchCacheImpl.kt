@@ -26,7 +26,6 @@ class RecentMovieSearchCacheImpl @Inject constructor(
         return Result.Success(movieCacheModelMapper.mapToEntityList(movieCacheModelList))
     }
 
-
     override suspend fun clearRecentSearch(): Result<Unit> {
         movieDao.clearRecentSearch()
         return Result.Success(Unit)

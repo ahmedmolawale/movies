@@ -30,5 +30,4 @@ class RecentMovieDiscoverCacheImpl @Inject constructor(
         movieDao.clearRecentDiscover()
         return Result.Success(Unit)
     }
-
 }

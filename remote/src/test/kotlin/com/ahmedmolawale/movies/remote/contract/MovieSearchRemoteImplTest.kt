@@ -5,7 +5,11 @@ import com.ahmedmolawale.movies.data.model.MovieEntity
 import com.ahmedmolawale.movies.domain.exception.Failure
 import com.ahmedmolawale.movies.domain.functional.Result
 import com.ahmedmolawale.movies.remote.mapper.MovieRemoteModelMapper
-import com.ahmedmolawale.movies.remote.utils.*
+import com.ahmedmolawale.movies.remote.utils.MOVIE_SEARCH_REQUEST_PATH
+import com.ahmedmolawale.movies.remote.utils.MovieRequestDispatcher
+import com.ahmedmolawale.movies.remote.utils.NO_MATCH_SEARCH_QUERY
+import com.ahmedmolawale.movies.remote.utils.SEARCH_QUERY
+import com.ahmedmolawale.movies.remote.utils.makeTestApiService
 import com.google.common.truth.Truth.assertThat
 import kotlinx.coroutines.runBlocking
 import okhttp3.mockwebserver.MockWebServer

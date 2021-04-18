@@ -81,8 +81,8 @@ class RecentMovieSearchCacheImplTest {
         val movieEntities2: List<MovieEntity> =
             listOf(DummyData.movieEntity.copy(title = "Olawale"))
 
-        recentMovieSearchCache.saveMovieSearch(movieEntities) //save the first
-        recentMovieSearchCache.saveMovieSearch(movieEntities2) //save the second
+        recentMovieSearchCache.saveMovieSearch(movieEntities) // save the first
+        recentMovieSearchCache.saveMovieSearch(movieEntities2) // save the second
 
         val result = recentMovieSearchCache.getRecentSearch()
         result as Result.Success
@@ -108,7 +108,6 @@ class RecentMovieSearchCacheImplTest {
         result as Result.Success
         assertThat(result.data).isEmpty()
     }
-
 
     @After
     @Throws(IOException::class)

@@ -2,7 +2,6 @@ package com.ahmedmolawale.movies.domain.functional
 
 import com.ahmedmolawale.movies.domain.exception.Failure
 
-
 sealed class Result<out R> {
     data class Success<out T>(val data: T) : Result<T>() // Status success and data of the result
     data class Error(val failure: Failure) :

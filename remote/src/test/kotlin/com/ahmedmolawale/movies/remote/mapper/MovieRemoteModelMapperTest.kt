@@ -4,7 +4,6 @@ import com.ahmedmolawale.movies.remote.DummyData
 import com.google.common.truth.Truth.assertThat
 import org.junit.Test
 
-
 class MovieRemoteModelMapperTest {
     private val movieRemoteModelMapper: MovieRemoteModelMapper = MovieRemoteModelMapper()
 

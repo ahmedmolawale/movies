@@ -1,0 +1,68 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="movie"
+            type="com.ahmedmolawale.movies.model.MoviePresentation" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="8dp">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/movie_image"
+            android:layout_width="@dimen/movie_image_width"
+            android:layout_height="@dimen/movie_image_height"
+            android:scaleType="centerCrop"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearance="@style/ShapeAppearance.App.RectImageView"
+            app:srcCompat="@drawable/movie_image_default_bg" />
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/circularstdmedium"
+            android:gravity="center"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="4dp"
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:text="@{movie.title}"
+            android:textAllCaps="false"
+            android:textColor="@color/light_grey"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="@id/movie_image"
+            app:layout_constraintStart_toStartOf="@id/movie_image"
+            app:layout_constraintTop_toBottomOf="@id/movie_image"
+            tools:text="Ahmed OLawale dfjndjfsnksjnfksjfkjsfksjfkjhhdnfkdjnm" />
+
+        <TextView
+            android:id="@+id/release_date"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/circularstdbook"
+            android:gravity="center"
+            android:text="@{movie.releaseDate}"
+            android:textAllCaps="false"
+            android:textColor="@color/light_grey"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="@id/movie_image"
+            app:layout_constraintStart_toStartOf="@id/movie_image"
+            app:layout_constraintTop_toBottomOf="@id/title"
+            tools:text="3/12/2020" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

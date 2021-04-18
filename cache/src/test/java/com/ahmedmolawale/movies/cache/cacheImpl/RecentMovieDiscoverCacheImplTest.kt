@@ -23,7 +23,6 @@ import org.junit.runner.RunWith
 import org.robolectric.annotation.Config
 import java.io.IOException
 
-
 @ExperimentalCoroutinesApi
 @RunWith(AndroidJUnit4::class)
 @Config(manifest = Config.NONE)
@@ -81,8 +80,8 @@ class RecentMovieDiscoverCacheImplTest {
         val movieEntities2: List<MovieEntity> =
             listOf(DummyData.movieEntity.copy(title = "Olawale"))
 
-        recentMovieDiscoverCache.saveMovieDiscoveries(movieEntities) //save the first
-        recentMovieDiscoverCache.saveMovieDiscoveries(movieEntities2) //save the second
+        recentMovieDiscoverCache.saveMovieDiscoveries(movieEntities) // save the first
+        recentMovieDiscoverCache.saveMovieDiscoveries(movieEntities2) // save the second
 
         val result = recentMovieDiscoverCache.getRecentDiscoveries()
         result as Result.Success
@@ -117,5 +116,4 @@ class RecentMovieDiscoverCacheImplTest {
         }
         movieDatabase.close()
     }
-
 }
