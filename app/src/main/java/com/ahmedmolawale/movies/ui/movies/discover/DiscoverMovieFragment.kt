@@ -1,5 +1,6 @@
 package com.ahmedmolawale.movies.ui.movies.discover
 
+import android.content.res.Configuration
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -23,6 +24,18 @@ class DiscoverMovieFragment : Fragment() {
     private val binding get() = _binding!!
     private val movieDiscoverViewModel: MovieDiscoverViewModel by viewModels()
     private lateinit var moviesAdapter: MoviesAdapter
+    private var SPAN_COUNT = 2
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        val currentOrientation = resources.configuration.orientation
+        SPAN_COUNT = if (currentOrientation == Configuration.ORIENTATION_LANDSCAPE) {
+            4
+        } else {
+            2
+        }
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -36,7 +49,6 @@ class DiscoverMovieFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        // movieDiscoverViewModel.discoverMovies()
         setupListAdapter()
     }
 
@@ -44,7 +56,7 @@ class DiscoverMovieFragment : Fragment() {
         moviesAdapter =
             MoviesAdapter { movie -> openMovieDetails(movie) }
         context?.let {
-            binding.discoverMovieList.initRecyclerViewUsingGridLayout(it, 2)
+            binding.discoverMovieList.initRecyclerViewUsingGridLayout(it, SPAN_COUNT)
         }
         binding.discoverMovieList.adapter = moviesAdapter
     }
