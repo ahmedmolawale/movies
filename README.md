@@ -1,3 +1,5 @@
+[![Android Build](https://github.com/ahmedmolawale/movies/actions/workflows/android_build.yml/badge.svg)](https://github.com/ahmedmolawale/movies/actions/workflows/android_build.yml)
+
 
 # Movies
 
@@ -13,6 +15,7 @@ I learnt from them.
 - [Architecture](#architecture)
 - [Libraries](#libraries)
 - [Testing](#testing)
+- [Extras](#Extras)
 - [Demo](#demo)
 
 
@@ -104,6 +107,10 @@ The presentation layer is extensively unit-tested to ensure that the viewmodel r
 
 The case study can do with more UI tests that verify that the view state is rendered as expected. However, the extensive unit test coverage ensures that the app works as expected.
 
+
+## Extras
+
+The project uses ktlint to enforce proper code style. Github actions handles continous integration, and runs ktlint and unit tests.
 
 ## Demo
 
